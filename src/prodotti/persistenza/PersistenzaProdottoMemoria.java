@@ -32,8 +32,8 @@ public class PersistenzaProdottoMemoria implements Ipersistenza{
 
     @Override
     public Prodotto ricercaProdotto(long id) throws PersistenzaException {
-        if (!prodotti.containsKey(p.getId())) {
-            return prodotti.get(id)
+        if (prodotti.containsKey(id)) {
+            return prodotti.get(id);
         }
         else
         {
@@ -43,7 +43,7 @@ public class PersistenzaProdottoMemoria implements Ipersistenza{
 
     @Override
     public void aggiornaProdotto(Prodotto p) throws PersistenzaException {
-        if (!prodotti.containsKey(p.getId())) {
+        if (prodotti.containsKey(p.getId())) {
             prodotti.replace(p.getId(), p);
         }
         else
@@ -55,8 +55,8 @@ public class PersistenzaProdottoMemoria implements Ipersistenza{
 
     @Override
     public void cancellaProdotto(long id) throws PersistenzaException {
-        if (!prodotti.containsKey(p.getId())) {
-            prodotti.remove(id)
+        if (prodotti.containsKey(id)) {
+            prodotti.remove(id);
         }
         else
         {
