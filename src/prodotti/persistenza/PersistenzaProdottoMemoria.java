@@ -2,6 +2,7 @@ package prodotti.persistenza;
 
 import prodotti.dominio.Prodotto;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -67,6 +68,12 @@ public class PersistenzaProdottoMemoria implements Ipersistenza{
 
     @Override
     public List<Prodotto> elencoProdotti() throws PersistenzaException  {
-        return null;
+        if (prodotti.isEmpty()) {
+
+            throw new PersistenzaException("elenco Vuoto");
+        }
+        else {
+            return  new ArrayList(prodotti.values());
+        }
     }
 }
