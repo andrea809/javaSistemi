@@ -32,16 +32,36 @@ public class PersistenzaProdottoMemoria implements Ipersistenza{
 
     @Override
     public Prodotto ricercaProdotto(long id) throws PersistenzaException {
-        return null;
+        if (!prodotti.containsKey(p.getId())) {
+            return prodotti.get(id)
+        }
+        else
+        {
+            throw new PersistenzaException("Prorodotto non trovato");
+        }
     }
 
     @Override
-    public void aggiornaProdotto(long id) throws PersistenzaException {
+    public void aggiornaProdotto(Prodotto p) throws PersistenzaException {
+        if (!prodotti.containsKey(p.getId())) {
+            prodotti.replace(p.getId(), p);
+        }
+        else
+        {
+            throw new PersistenzaException("Prorodotto non trovato");
+        }
 
     }
 
     @Override
     public void cancellaProdotto(long id) throws PersistenzaException {
+        if (!prodotti.containsKey(p.getId())) {
+            prodotti.remove(id)
+        }
+        else
+        {
+            throw new PersistenzaException("Prorodotto non trovato");
+        }
 
     }
 
